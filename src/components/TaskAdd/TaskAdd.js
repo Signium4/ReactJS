@@ -1,13 +1,15 @@
-import './TaskList.css';
+import './TaskAdd.module.scss';
 import React, { Component } from 'react';
-import Task from '../Task/Task';
+import Task from '../TaskAdd/TaskAdd';
 
 class TaskAdd extends React.Component {
-  
-    state={
-      name: '',
-      description: ''}
-    }
+  // constructor(props){
+  //   super(props);
+  //   state={
+  //     name: '',
+  //     description: ''
+  //   }
+  // }
 
     inputChange = (event) => {
         const { value, name } = event.currentTarget
@@ -23,9 +25,9 @@ class TaskAdd extends React.Component {
     render() {
       return (
         <div>
-          <input value={this.state.newTask.name} onChange={this.inputChange} name="name" placeholder="Имя дела"/>
+          {/* <input value={this.state.newTask.name} onChange={this.inputChange} name="name" placeholder="Имя дела"/>
           <input value={this.state.newTask.description} onChange={this.inputChange} name="description" placeholder="Описание"/>
-          <button onClick={this.addTask}>Добавить</button>
+          <button onClick={props.addTask}>Добавить</button> */}
         </div>
       );
     }

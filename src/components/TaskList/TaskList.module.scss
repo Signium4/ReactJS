@@ -1,0 +1,73 @@
+.flexDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+
+    &-input {
+        justify-content: flex-start;
+    }
+}
+
+.input {
+    &-theme-light {
+        border: 1px solid #c7c7c7;
+        width: 120px;
+        padding: 4px 12px;
+        transition-duration: 0.5s;
+    }
+    &-theme-dark {
+        border: none;
+        width: 140px;
+        background-color: #121212;
+        border-bottom: 2px solid #ffffffb3;
+        color: #ffffffb3;
+        border-radius: 0;
+        transition-duration: 0.5s;
+        margin: 5px;
+    }
+}
+
+.button {
+	cursor: pointer;
+
+    &-theme-light {
+        margin-left: 6px;
+        border-radius:12px;
+        padding:10px;
+        background:linear-gradient(to bottom, #e2e5eb 5%, #ffffff 100%);
+        color:#000000;
+        background-color:#e2e5eb;
+	    border:1px solid #ffffff;
+        transition-duration: 0.5s;
+        
+        &:hover {
+            background:linear-gradient(to bottom, #ffffff 5%, #e2e5eb 100%);
+            background-color:#ffffff;
+        }
+        &:active {
+            position:relative;
+            top:1px;
+        }
+    }
+
+    &-theme-dark {
+        border-radius:4px;
+        margin:2px;
+        padding: 4px 12px;
+        width: 86px;
+        color:#ffffff;
+	    border:1px solid #000000;
+        background-color:#121212;
+        transition-duration: 0.5s;
+        
+        &:hover {
+            background:linear-gradient(to bottom, #000000 5%, #3f3f3f 100%);
+            background-color:#000000;
+        }
+        &:active {
+            position:relative;
+            top:1px;
+        }
+    }
+}
