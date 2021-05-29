@@ -71,36 +71,3 @@
         }
     }
 }
-
-.heading {
-    display: flex;
-    justify-content: left;
-    padding: 5%;
-    text-align: center;
-    width: 90%;
-    color: #282c34;
-    padding: 1%;
-    margin-left: 5%;
-}
-
-.link {
-    &-theme-light {
-        background-color: white;
-        color: #282c34;
-        transition-duration: 0.5s;
-        text-decoration: #282733;
-
-        :hover{
-            border-bottom: 1px solid #282c34;
-            text-decoration: none;
-        }
-    }
-
-    &-theme-dark {
-        background-color: #282c34;
-        color: #ffffffb3;
-        transition-duration: 0.5s;
-        text-decoration: none;
-    }
-
-}

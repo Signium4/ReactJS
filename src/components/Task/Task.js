@@ -5,7 +5,6 @@ import { ThemeContext } from '../App/ThemeContext';
 
 const cx = classnames.bind(styles)
 
-// const theme = "dark"
 const Task = ({id, name, description, completed, changeStatus}) => {
     const handleClick = () => {
       changeStatus(id)

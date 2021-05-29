@@ -1,0 +1,91 @@
+.id {
+  font-size: large;
+}
+
+.name {
+  font-size: large;
+}
+
+.description {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.button {
+  &-theme-light{
+      border-radius: 8px;
+      margin-left: 18px;
+      color: #282c34;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      margin-top: 8px;
+      width: 100px;
+  
+      &-done {
+          background-color: #cbff7b;
+          border-color: #a9ea44;
+      }
+      &-undone {
+          background-color: #FF8A7B;
+          color: white;
+          border-color: white;
+          
+      }
+  }
+  &-theme-dark {
+      border-color: #121212;
+      border-radius: 4px;
+      padding-left: 20px;
+      padding-right: 20px;
+      width: 120px;
+      &-done {
+          background-color: #121212;
+          color: #ffffffb3;
+      }
+      &-undone {
+          color: #121212;
+          background-color: #ffffffb3;
+      }
+  }
+}
+
+.spanTask {
+    display: flex;
+    flex-direction: column;
+  &-theme-light {
+      border-radius: 20px;
+      width: 46%;
+      padding: 1%;
+      margin: 1%;
+      background-color:#FFE8B2;
+      transition-duration: 0.5s;
+  }
+  &-theme-dark {
+      border-color: #121212;
+      border-radius: 4px;
+      width: 47%;
+      margin: 10px;
+      padding: 0.5%;
+      background-color: #282c34;
+      color: #ffffffb3;
+      transition-duration: 0.5s;
+  }
+}
+
+.link {
+    &-theme-light {
+        background-color:#FFE8B2;
+        color: #282c34;
+        transition-duration: 0.5s;
+        text-decoration: none;
+    }
+
+    &-theme-dark {
+        background-color: #282c34;
+        color: #ffffffb3;
+        transition-duration: 0.5s;
+        text-decoration: none;
+    }
+}
