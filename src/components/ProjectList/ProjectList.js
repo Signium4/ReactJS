@@ -1,29 +1,48 @@
 import styles from './ProjectList.module.scss';
 import React, { Component } from 'react';
 import classnames from "classnames/bind"
-import { ThemeContext } from "../App/ThemeContext";
-import Project from '../Project/Project';
+import {Project} from '../Project/Project';
+import { handleProjectNameChange, handleNewProjectAdd } from "../../actions/project_list";
+
+import { connect } from "react-redux";
 
 const cx = classnames.bind(styles)
 
-class ProjectList extends React.Component {
+const mapStateToProps = (state) => ({
+  newProjectName: state.app.newProject.name,
+  projectsById: state.app.projectsById,
+  theme: state.app.theme
+});
 
-  static contextType = ThemeContext;
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOnNewProjectNameChange: (newProjectName) => dispatch(handleProjectNameChange(newProjectName)),
+  dispatchOnNewProjectAdd: (id) => dispatch(handleNewProjectAdd(id))
+}) 
 
-  render() {
-    return (
-      <div>
-        <div className={cx("flexDiv", "flexDiv-input")}>
-          <input className={cx(`input-theme-${this.context}`)} value={this.props.newProjectName} onChange={this.props.inputChange} name="name" placeholder="Имя проекта" />
-          <button className={cx("button", `button-theme-${this.context}`)} onClick={this.props.addProject} on>Добавить</button>
+const ProjectList = ({ theme, newProjectName, projectsById, dispatchOnNewProjectNameChange,  dispatchOnNewProjectAdd}) => {
+
+  const projectNameChange = (event) => {
+    dispatchOnNewProjectNameChange(event.target.value)
+  };
+
+const newProjectAdd = () => {
+  const lastProjectId = Object.keys(projectsById).length;
+  dispatchOnNewProjectAdd(lastProjectId)
+};
+
+  return (
+
+        <div>
+          <div className={cx("flexDiv", "flexDiv-input")}>
+            <input className={cx(`input-theme-${theme}`)} value={newProjectName} onChange={projectNameChange} name="name" placeholder="Имя проекта" />
+            <button className={cx("button", `button-theme-${theme}`)} onClick={newProjectAdd} on>Добавить</button>
+          </div>
+          <div className={cx("flexDiv")}>
+            {Object.keys(projectsById).map(projectId => <Project project={projectsById[projectId]} />)}
+          </div>
         </div>
-        <div className={cx("flexDiv")}>
-          {Object.keys(this.props.projectsById).map(projectId => 
-          <Project project={this.props.projectsById[projectId]}/>)}
-        </div>
-      </div>
-    );
-  }
+
+  );
 }
 
-export default ProjectList;
+export const ProjectListRedux = connect(mapStateToProps, mapDispatchToProps)(ProjectList);
