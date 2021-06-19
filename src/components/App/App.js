@@ -1,16 +1,31 @@
-import './App.css';
+import styles from "./App.module.scss";
+import classnames from "classnames/bind"
 import React, { Component } from 'react';
 import TaskList from '../TaskList/TaskList';
-import Task from '../Task/Task';
+import { basicTheme, ThemeContext} from './ThemeContext';
 
+const cx = classnames.bind(styles)
 
 class App extends React.Component {
+  state = {
+    theme: basicTheme,
+  }
+
+  handleClick = () => {
+    const current = (this.state.theme === 'light')? 'dark': 'light';
+    this.setState({theme: current})
+    console.log(this.state.theme)
+  }
+
   render() {
     return(
-    <div>
-      <h1 className="heading">Список дел</h1>
+    <div className={cx(`div-theme-${this.state.theme}`)}>
+      <h1 className={cx("heading")}>Список дел</h1>
+      <button className={cx("changeTheme")} onClick={this.handleClick}>Сменить тему</button>
       <div>
-        <TaskList />
+        <ThemeContext.Provider value={this.state.theme}>
+          <TaskList />
+        </ThemeContext.Provider>
       </div>
     </div>
     )

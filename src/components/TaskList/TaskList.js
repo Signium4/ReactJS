@@ -1,7 +1,10 @@
-import './TaskList.css';
+import styles from './TaskList.module.scss';
 import React, { Component } from 'react';
 import Task from '../Task/Task';
+import classnames from "classnames/bind"
+import { ThemeContext } from "../App/ThemeContext";
 
+const cx = classnames.bind(styles)
 
 let listOfTasks = [
     {
@@ -67,6 +70,8 @@ let listOfTasks = [
   ]
 
 class TaskList extends React.Component {
+
+  static contextType = ThemeContext;
   
   state={
     tasks: listOfTasks,
@@ -121,13 +126,13 @@ class TaskList extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <input value={this.state.newTask.name} onChange={this.inputChange} name="name" placeholder="Имя дела"/>
-          <input value={this.state.newTask.description} onChange={this.inputChange}
+        <div className={cx("flexDiv", "flexDiv-input")}>
+          <input className={cx(`input-theme-${this.context}`)} value={this.state.newTask.name} onChange={this.inputChange} name="name" placeholder="Имя дела"/>
+          <input className={cx(`input-theme-${this.context}`)} value={this.state.newTask.description} onChange={this.inputChange}
           name="description" placeholder="Описание"/>
-          <button onClick={this.addTask}>Добавить</button>
+          <button className={cx("button", `button-theme-${this.context}`)} onClick={this.addTask} on>Добавить</button>
         </div>
-        <div>
+        <div className={cx("flexDiv")}>
           {this.state.tasks.map(task => <Task id={task.id} name={task.name} description={task.description}
           completed={task.completed} changeStatus={this.changeTaskStatus}/>)}
         </div>
